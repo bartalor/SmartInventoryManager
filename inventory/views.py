@@ -1,22 +1,24 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from django.views import View
-from .models import Product
-import json
+from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.request import Request
+from inventory.models import Product, Supplier, Category
+from inventory.serializers import ProductSerializer
+from rest_framework.status import HTTP_400_BAD_REQUEST
 
 @method_decorator(csrf_exempt, name="dispatch")
-class ProductView(View):
+class ProductView(APIView):
     def get(self, request):
-        products = list(Product.objects.values())
-        return JsonResponse({"products": products})
+        products = Product.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response({"products": serializer.data})
 
-    def post(self, request):
-        data = json.loads(request.body)
-        product = Product.objects.create(
-            name=data["name"],
-            quantity=data["quantity"],
-            price=data["price"],
-            supplier=data.get("supplier"),
-        )
-        return JsonResponse({"id": product.id, "message": "Product created successfully"})
+    def post(self, request: Request):
+        serializer = ProductSerializer(data=request.data)
+        if serializer.is_valid():
+            product = serializer.save()
+            return Response({"message": "Product created successfully", "id": product.id})
+        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)

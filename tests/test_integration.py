@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from inventory.models import Supplier, Category, Product
+from SmartInventoryManager.models import Supplier, Category, Product
 from rest_framework.test import APIClient
 
 class ProductIntegrationTest(TestCase):

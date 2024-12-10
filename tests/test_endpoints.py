@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
-from inventory.models import Supplier, Category, Product
+from SmartInventoryManager.models import Supplier, Category, Product
 
 class ProductEndpointTest(APITestCase):
 

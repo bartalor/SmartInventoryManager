@@ -2,8 +2,9 @@ import os
 import django
 import sqlite3
 
+APP_NAME = 'SmartInventoryManager'
 # Set Django settings
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'inventory.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'{APP_NAME}.settings')
 django.setup()
 
 # Path to the database as defined in settings.py
@@ -12,15 +13,15 @@ DB_PATH = '/home/bar/data/SmartInventoryManager/db.sqlite3'
 def check_installed_apps():
     from django.conf import settings
     print("=== Step 1: Check INSTALLED_APPS ===")
-    if 'inventory' in settings.INSTALLED_APPS:
-        print("SUCCESS: 'inventory' is in INSTALLED_APPS")
+    if APP_NAME in settings.INSTALLED_APPS:
+        print(f"SUCCESS: '{APP_NAME}' is in INSTALLED_APPS")
     else:
-        print("FAILURE: 'inventory' is NOT in INSTALLED_APPS")
+        print(f"FAILURE: '{APP_NAME}' is NOT in INSTALLED_APPS")
     print()
 
 def check_model_definition():
     try:
-        from inventory.models import Product
+        from SmartInventoryManager.models import Product
         print("=== Step 2: Check Product Model Definition ===")
         print("SUCCESS: Product model imported successfully")
         print("Fields:", [field.name for field in Product._meta.fields])
@@ -35,10 +36,10 @@ def check_migrations():
     connection = connections['default']
     executor = MigrationExecutor(connection)
     applied_migrations = executor.loader.applied_migrations
-    if any('inventory' in migration for migration in applied_migrations):
-        print("SUCCESS: Migrations for 'inventory' are applied")
+    if any(APP_NAME in migration for migration in applied_migrations):
+        print(f"SUCCESS: Migrations for '{APP_NAME}' are applied")
     else:
-        print("FAILURE: No applied migrations for 'inventory'")
+        print(f"FAILURE: No applied migrations for '{APP_NAME}'")
     print()
 
 def check_database_table_sqlite():
@@ -60,7 +61,7 @@ def check_database_table_sqlite():
 def check_database_table_django_orm():
     print("=== Step 5: Check Database Table Using Django ORM ===")
     try:
-        from inventory.models import Product
+        from SmartInventoryManager.models import Product
         if Product.objects.exists():
             print("SUCCESS: 'inventory_product' table exists and has data (verified via ORM)")
         else:

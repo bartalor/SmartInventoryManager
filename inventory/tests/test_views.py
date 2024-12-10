@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
-from inventory.models import Supplier, Category, Product
+from inventory.models import Supplier, Category
 
 class ProductAPIViewTest(APITestCase):
 
@@ -10,7 +10,7 @@ class ProductAPIViewTest(APITestCase):
         self.category = Category.objects.create(name="Category A")
 
     def test_get_empty_products(self):
-        url = reverse("products")  # Ensure this matches the name in your `urls.py`
+        url = reverse("products")
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data["products"]), 0)

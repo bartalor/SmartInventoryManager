@@ -14,3 +14,4 @@ from .product_view import ProductView
 from .cart import Cart
 from .cart_item import CartItem
 from .tag import Tag
+from .user import User

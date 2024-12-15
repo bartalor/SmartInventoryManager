@@ -1,8 +1,10 @@
+import os
+
 BASE_DIR = "/home/bar/my_mount/SmartInventoryManager"
 SECRET_KEY = "your-secret-key"
 DEBUG = True
 ALLOWED_HOSTS = []
-
+DEFAULT_DATABASE = os.getenv('DEFAULT_DATABASE', 'main')  # Default to 'main' if not set
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -45,7 +47,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "SmartInventoryManager.wsgi.application"
 
 DATABASES = {
-    'default': {
+    'main':{
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': '/home/bar/data/SmartInventoryManager/db.sqlite3',
     },
@@ -54,6 +56,8 @@ DATABASES = {
         'NAME': '/home/bar/data/SmartInventoryManager/db.sqlite3_test',
     }
 }
+
+DATABASES['default'] = DATABASES[DEFAULT_DATABASE]
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -71,3 +75,6 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = "SmartInventoryManager.User"
+
+LOGIN_REDIRECT_URL = '/products/'

@@ -2,12 +2,11 @@
 
 import os
 import sys
+from dotenv import load_dotenv
 
 if __name__ == "__main__":
-    try:
-        import SmartInventoryManager.settings
-    except ModuleNotFoundError as e:
-        print("ModuleNotFoundError:", e)
+    load_dotenv()
+    import SmartInventoryManager.settings
     
     # Set DJANGO_SETTINGS_MODULE as usual
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "SmartInventoryManager.settings")

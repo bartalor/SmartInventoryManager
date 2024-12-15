@@ -24,3 +24,9 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.product_id})"
+    
+    class Meta:
+        permissions = [
+            ("can_view_inventory", "Can view inventory"),
+            ("can_edit_inventory", "Can edit inventory"),
+        ]

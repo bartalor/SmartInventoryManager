@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from django.apps import apps
+from SmartInventoryManager.settings import APP_NAME
 from pathlib import Path
 
 
@@ -17,8 +18,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         file_path = kwargs["file_path"]
         tables = [
-            'category', 'supplier', 'tag', 'product',
-            'customer', 'order', 'orderdetail', 'warehouse', 'inventory'
+            'category', 'tag', 'product', 'inventory_product'
         ]
 
         if not Path(file_path).is_file():
@@ -28,7 +28,7 @@ class Command(BaseCommand):
         self.stdout.write("Resetting specific tables (deleting all rows)...")
         for table_name in tables:
             try:
-                model = apps.get_model('SmartInventoryManager', table_name)
+                model = apps.get_model(APP_NAME, table_name)
                 model.objects.all().delete()
                 self.stdout.write(self.style.SUCCESS(f"Reset table '{table_name}'."))
             except Exception as e:

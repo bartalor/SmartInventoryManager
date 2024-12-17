@@ -1,0 +1,130 @@
+[
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 1,
+        "fields": {
+            "name": "Electronics"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 2,
+        "fields": {
+            "name": "Clothing"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 3,
+        "fields": {
+            "name": "Home Appliances"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 4,
+        "fields": {
+            "name": "Books"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 1,
+        "fields": {
+            "name": "On Sale"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 2,
+        "fields": {
+            "name": "High-End"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 3,
+        "fields": {
+            "name": "Latest"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 4,
+        "fields": {
+            "name": "Eco-Friendly"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 1,
+        "fields": {
+            "name": "Laptop",
+            "price": 1000,
+            "category": 1,
+            "tags": [1, 2]
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 2,
+        "fields": {
+            "name": "T-Shirt",
+            "price": 20,
+            "category": 2,
+            "tags": [3]
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 3,
+        "fields": {
+            "name": "Refrigerator",
+            "price": 500,
+            "category": 3,
+            "tags": [2, 4]
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 4,
+        "fields": {
+            "name": "Novel",
+            "price": 15,
+            "category": 4,
+            "tags": [1, 3]
+        }
+    },
+	{
+        "model": "SmartInventoryManager.inventory_product",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+			"quantity": 50
+        }
+    },
+	{
+        "model": "SmartInventoryManager.inventory_product",
+        "pk": 2,
+        "fields": {
+            "product": 2,
+			"quantity": 200
+        }
+    },
+	{
+        "model": "SmartInventoryManager.inventory_product",
+        "pk": 3,
+        "fields": {
+            "product": 3,
+			"quantity": 30
+        }
+    },
+	{
+        "model": "SmartInventoryManager.inventory_product",
+        "pk": 4,
+        "fields": {
+            "product": 4,
+            "quantity": 100
+        }
+    }
+]

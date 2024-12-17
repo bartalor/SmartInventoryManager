@@ -1,6 +1,7 @@
 import os
 
 BASE_DIR = "/home/bar/my_mount/SmartInventoryManager"
+APP_NAME = 'SmartInventoryManager'
 SECRET_KEY = "your-secret-key"
 DEBUG = True
 ALLOWED_HOSTS = []
@@ -13,7 +14,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
      "rest_framework",
-    "SmartInventoryManager",  # My app
+    APP_NAME,
 ]
 
 MIDDLEWARE = [
@@ -26,7 +27,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "SmartInventoryManager.urls"
+ROOT_URLCONF = f"{APP_NAME}.urls"
 
 TEMPLATES = [
     {
@@ -44,7 +45,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "SmartInventoryManager.wsgi.application"
+WSGI_APPLICATION = f"{APP_NAME}.wsgi.application"
 
 DATABASES = {
     'main':{
@@ -75,6 +76,4 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-AUTH_USER_MODEL = "SmartInventoryManager.User"
-
-LOGIN_REDIRECT_URL = '/products/'
+AUTH_USER_MODEL = f"{APP_NAME}.User"

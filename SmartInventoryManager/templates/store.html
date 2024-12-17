@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Store </h1>
+<h2>Welcome to the Store</h2>
+<table>
+	<tr>
+		<th>Product</th>
+		<th>Price</th>
+		<th>Action</th>
+	</tr>
+	{% for product in products %}
+	<tr>
+		<td>{{ product.name }}</td>
+		<td>${{ product.price }}</td>
+		<td>
+			{% if user.is_authenticated %}
+				<a href="{% url 'purchase_product' product.id %}" class="button">Buy</a>
+			{% else %}
+				<p>Login to purchase</p>
+			{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}

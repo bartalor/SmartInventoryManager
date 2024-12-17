@@ -1,7 +1,8 @@
 from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
-from inventory.models import Supplier, Category
+from ..models import Supplier, Category
+
 
 class ProductAPIViewTest(APITestCase):
 

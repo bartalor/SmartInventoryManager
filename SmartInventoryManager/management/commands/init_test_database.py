@@ -17,8 +17,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         file_path = kwargs["file_path"]
         tables = [
-            'category', 'supplier', 'tag', 'product',
-            'customer', 'order', 'orderdetail', 'warehouse', 'inventory'
+            'category', 'tag', 'product'
         ]
 
         if not Path(file_path).is_file():

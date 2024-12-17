@@ -1,0 +1,106 @@
+[
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 1,
+        "fields": {
+            "name": "Electronics"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 2,
+        "fields": {
+            "name": "Clothing"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 3,
+        "fields": {
+            "name": "Home Appliances"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.category",
+        "pk": 4,
+        "fields": {
+            "name": "Books"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 1,
+        "fields": {
+            "name": "On Sale"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 2,
+        "fields": {
+            "name": "High-End"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 3,
+        "fields": {
+            "name": "Latest"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.tag",
+        "pk": 4,
+        "fields": {
+            "name": "Eco-Friendly"
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 1,
+        "fields": {
+            "name": "Laptop",
+            "price": 1000,
+            "quantity": 50,
+            "category": 1,
+            "supplier": 1,
+            "tags": [1, 2]
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 2,
+        "fields": {
+            "name": "T-Shirt",
+            "price": 20,
+            "quantity": 200,
+            "category": 2,
+            "supplier": 2,
+            "tags": [3]
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 3,
+        "fields": {
+            "name": "Refrigerator",
+            "price": 500,
+            "quantity": 30,
+            "category": 3,
+            "supplier": 3,
+            "tags": [2, 4]
+        }
+    },
+    {
+        "model": "SmartInventoryManager.product",
+        "pk": 4,
+        "fields": {
+            "name": "Novel",
+            "price": 15,
+            "quantity": 100,
+            "category": 4,
+            "supplier": 3,
+            "tags": [1, 3]
+        }
+    }
+]

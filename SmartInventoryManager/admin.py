@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Customer, Transaction, Order
+from .models import Product
 from django.db.models import Model
 
 
@@ -10,15 +10,3 @@ def _get_fields(model: Model):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = _get_fields(Product)
-
-@admin.register(Customer)
-class CustomerAdmin(admin.ModelAdmin):
-    list_display = _get_fields(Customer)
-
-@admin.register(Transaction)
-class TransactionAdmin(admin.ModelAdmin):
-    list_display = _get_fields(Transaction)
-
-@admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = _get_fields(Order)

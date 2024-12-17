@@ -1,17 +1,17 @@
 from django.urls import path
-from django.contrib import admin
-from .views import CustomerView, TransactionView, ProductView, OrderView, home
 from .views.home import home
-
-from django.contrib.auth.views import LoginView, LogoutView
+from .views.logout_view import logout_view
+from .views.store import store, purchase_product
+from .views.register_view import register
+from django.contrib.auth.views import LoginView
+from django.contrib import admin
 
 urlpatterns = [
+    path("", home, name="home"),
     path('admin/', admin.site.urls),
-    path("", home, name="home"),  # Home page route
-    path("products/", ProductView.as_view(), name='products'),
-    path('customers/', CustomerView.as_view(), name='customers'),
-    path('transactions/', TransactionView.as_view(), name='transactions'),
-    path('orders/', OrderView.as_view(), name='orders'),
-    path("login/", LoginView.as_view(template_name="login.html"), name="login"),
-    path("logout/", LogoutView.as_view(next_page="/"), name="logout"),
+    path("store/", store, name="store"),
+    path("purchase/<int:product_id>/", purchase_product, name="purchase_product"),
+    path("login/", LoginView.as_view(template_name="login.html", next_page="home"), name="login"),
+    path("logout/", logout_view, name="logout"),
+    path("register/", register, name="register"),
 ]

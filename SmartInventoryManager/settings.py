@@ -13,7 +13,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
      "rest_framework",
-    "SmartInventoryManager",  # My app
+    "SmartInventoryManager",
 ]
 
 MIDDLEWARE = [
@@ -76,5 +76,3 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "SmartInventoryManager.User"
-
-LOGIN_REDIRECT_URL = '/products/'

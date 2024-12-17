@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if user.is_authenticated  %}
+		<h1>Welcome {{user.first_name}} !</h1>
+		{% if user.is_superuser %}
+			<a href="{% url 'logout' %}" class="button">Logout</a>
+			<a href="{% url 'admin:index' %}" class="button">Admin Panel</a>
+		{% else %}
+			<a href="{% url 'logout' %}" class="button">Logout</a>
+			<a href="{% url 'store' %}" class="button">Store</a>
+		{% endif %}
+	{% else %}
+		<h1>Welcome to Smart Inventory Manager</h1>
+		<a href="{% url 'login' %}" class="button">Login</a>
+		<a href="{% url 'register' %}" class="button">Register</a>
+	{% endif %}
+{% endblock %}
